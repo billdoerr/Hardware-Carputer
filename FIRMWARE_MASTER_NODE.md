@@ -23,13 +23,12 @@ All notable changes to the nodes required for the Android application project wi
     http://raspi-ups.appspot.com/en/index.jsp  
     https://domoticproject.com/protect-raspberry-pi-ups-power-failure/  
 #### Changed
-- [ ] Sync versions between master and slave.  Even if nothing has change on one of the nodes.
 #### Removed
 
 ## [Unreleased]
-### v1.3 (IN PROGESS)
+### v1.3 (9May2019)
 #### Added
-- [ ]  Add power off switch  
+- [x]  Add power off switch  
     https://github.com/Howchoo/pi-power-button  
 	https://github.com/TonyLHansen/raspberry-pi-safe-off-switch/
     https://www.cyberciti.biz/faq/remote-shutdown-linux-computer-from-the-cli/  
@@ -49,11 +48,36 @@ All notable changes to the nodes required for the Android application project wi
         tail -f listen_for_shutdown.log
         
         sudo update-rc.d listen_for_shutdown.sh defaults
-        sudo update-rc.d heartbeat.sh defaults
+        
+        Power-Off Button
+        BUTTON connects to board Pin 37 GPIO26
+        BUTTON connects to board Pin 39 GND  
+        
+        
+- [x] Add LED to indicate power-on.  Will blink on/off once per second.
 
+        cd /etc/init.d
+        sudo vi heartbeat.sh
+        sudo chmod +x heartbeat.sh
+        sudo mkdir /var/log/carputer
+        cd /usr/local/bin
+        sudo vi heartbeat.py
+        sudo chmod +x heartbeat.py
+        sudo update-rc.d heartbeat.sh defaults
+        sudo reboot
+        cd /var/log/carputer/
+        ls
+        tail -f heartbeat.log
+        
+        sudo update-rc.d heartbeat.sh defaults  
+
+
+        Power-On LED Indicator
+        LED connects to board Pin 13 GPIO27
+        LED -> RESISTOR (330 ohm) connects to board Pin 14 GND  
 #### Changed
-- [ ] Sync versions between master and slave.  Even if nothing has change on one of the nodes.
-- [ ] Change filesystem on USB stick from ext4 to ntfs so that videos and be easily viewed from Windows OS.
+- [x] Change filesystem on USB stick from ext4 to ntfs so that videos and be easily viewed from Windows OS.  
+    https://pimylifeup.com/raspberry-pi-ntfs/  
 #### Removed
 
 ## [Released]

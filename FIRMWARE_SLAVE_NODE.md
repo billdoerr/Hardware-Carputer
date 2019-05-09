@@ -1,4 +1,4 @@
-# Firmware
+4# Firmware
 All notable changes to the nodes required for the Android application project will be documented in this file.
 
 
@@ -18,22 +18,6 @@ All notable changes to the nodes required for the Android application project wi
 
 ## [Unreleased]
 ### v1.X (NOT STARTED)
-#### Added
-#### Changed
-- [ ] Sync versions between master and slave.  Even if nothing has change on one of the nodes.
-#### Removed
-
-## [Unreleased]
-### v1.3 (IN PROGESS)
-#### Added
-- [ ]  Add power off switch on master node which will send poweroff command to slave nodes.
-	https://github.com/TonyLHansen/raspberry-pi-safe-off-switch/
-#### Changed
-- [ ] Sync versions between master and slave.  Even if nothing has change on one of the nodes.
-#### Removed
-
-## [Unreleased]
-### v1.2 (NOT STARTED)
 #### Added
 #### Changed
 - [ ] Sync versions between master and slave.  Even if nothing has change on one of the nodes.
@@ -82,7 +66,7 @@ sudo chmod +x carputer
 
 
 cd /etc
-sudo mkdir carput
+sudo mkdir carputer
 cd carputer
 sudo vi version
 v1.1
