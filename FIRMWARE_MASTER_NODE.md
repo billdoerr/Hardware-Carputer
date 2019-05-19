@@ -1,4 +1,4 @@
-# Firmware
+# FIRMWARE_MASTER_NODE.md
 All notable changes to the nodes required for the Android application project will be documented in this file.
 
 
@@ -8,11 +8,7 @@ All notable changes to the nodes required for the Android application project wi
 - [ ]  Setup RaspberryPi as Router.  https://www.instructables.com/id/Use-Raspberry-Pi-3-As-Router/
   - [ ]  IP Bridge.  **NOTE:**  Once enabling the bridge it no longer provices an IP address for a client connection.
 ##  Feature Creep - not assigned to any release
-- [ ]  Android:  View images/videos archived on the RaspberryPi USBStick.
-- [ ]  Android:  cron job to delete old snapshots.  Would also need new shared preferences and fragment added to SettingsActivity.
 - [ ]  RaspberryPi:  Create REST API to obtain files (images, videos, data, etc).  Example using Python -> https://codeburst.io/this-is-how-easy-it-is-to-create-a-rest-api-8a25122ab1f3.
-- [x]  Android:  Simple SSH connect with JSch to RaspberryPi. http://eridem.net/android-tip-021-ssh-execute-remote-commands-with-android
-- [ ]  Android:  SSH Commands.  Create history of commands.  UI to also delete commands.  Expand list of 'stock' commands.
 - [ ]
 - [ ]
 
@@ -23,12 +19,17 @@ All notable changes to the nodes required for the Android application project wi
     http://raspi-ups.appspot.com/en/index.jsp  
     https://domoticproject.com/protect-raspberry-pi-ups-power-failure/  
 #### Changed
+- [ ] New Features:  listen_for_shutdown.py  
+        - [ ] Press the momentary button and hold for 1 to 2 seconds to reboot  
+        - [ ] Press the momentary button and hold for 3 to 7 seconds to implement safe shutdown  
+        - [ ] Press the momentary button and hold for >8 seconds to force shutdown  
+
 #### Removed
 
-## [Unreleased]
-### v1.3 (9May2019)
+## [Released]
+### v1.3 (17May2019)
 #### Added
-- [x]  Add power off switch  
+- [x]  Add power off switch and LED (Yellow) indicator.
     https://github.com/Howchoo/pi-power-button  
 	https://github.com/TonyLHansen/raspberry-pi-safe-off-switch/
     https://www.cyberciti.biz/faq/remote-shutdown-linux-computer-from-the-cli/  
@@ -49,12 +50,16 @@ All notable changes to the nodes required for the Android application project wi
         
         sudo update-rc.d listen_for_shutdown.sh defaults
         
-        Power-Off Button
+        Wiring:  Power-Off Button
         BUTTON connects to board Pin 37 GPIO26
         BUTTON connects to board Pin 39 GND  
         
+        Wiring:  Power-Off Button LED (Yellow) Indicator
+        LED (Yellow) -> RESISTOR (330 ohm) connects to board Pin 33 GPIO13
+        LED (Yellow) connects to board Pin 34 GND  
         
-- [x] Add LED to indicate power-on.  Will blink on/off once per second.
+        
+- [x] Add LED (Red) to indicate power-on.  Will blink on/off once per second.
 
         cd /etc/init.d
         sudo vi heartbeat.sh
@@ -71,10 +76,10 @@ All notable changes to the nodes required for the Android application project wi
         
         sudo update-rc.d heartbeat.sh defaults  
 
-
-        Power-On LED Indicator
-        LED connects to board Pin 13 GPIO27
-        LED -> RESISTOR (330 ohm) connects to board Pin 14 GND  
+        Wiring:  Power-On LED (Red) Indicator
+        LED (Red) -> RESISTOR (330 ohm) connects to board Pin 13 GPIO27
+        LED (Red) connects to board Pin 14 GND 
+        
 #### Changed
 - [x] Change filesystem on USB stick from ext4 to ntfs so that videos and be easily viewed from Windows OS.  
     https://pimylifeup.com/raspberry-pi-ntfs/  

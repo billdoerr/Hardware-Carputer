@@ -1,20 +1,11 @@
-4# Firmware
+4# FIRMWARE_SLAVE_NODE.md
 All notable changes to the nodes required for the Android application project will be documented in this file.
 
 
 ## [Unreleased]
 ### v1.x  (NOT STARTED)
-- [ ]  Determine power usage with RaspberryPi + USBStick + two USB Cameras + router.
-- [ ]  Setup RaspberryPi as Router.  https://www.instructables.com/id/Use-Raspberry-Pi-3-As-Router/
-  - [ ]  IP Bridge.  **NOTE:**  Once enabling the bridge it no longer provices an IP address for a client connection.
-##  Feature Creep - not assigned to any release
-- [ ]  Android:  View images/videos archived on the RaspberryPi USBStick.
-- [ ]  Android:  cron job to delete old snapshots.  Would also need new shared preferences and fragment added to SettingsActivity.
-- [ ]  RaspberryPi:  Create REST API to obtain files (images, videos, data, etc).  Example using Python -> https://codeburst.io/this-is-how-easy-it-is-to-create-a-rest-api-8a25122ab1f3.
-- [x]  Android:  Simple SSH connect with JSch to RaspberryPi. http://eridem.net/android-tip-021-ssh-execute-remote-commands-with-android
-- [ ]  Android:  SSH Commands.  Create history of commands.  UI to also delete commands.  Expand list of 'stock' commands.
-- [ ]
-- [ ]
+##  Feature Creep - not assigned to any release 
+
 
 ## [Unreleased]
 ### v1.X (NOT STARTED)
