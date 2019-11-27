@@ -15,6 +15,16 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_SLAVE
 - [ ] Sync versions between master and slave.  Even if nothing has change on one of the nodes.
 #### Removed
 
+## [Unreleased]
+### v1.2 (IN PROGRESS)
+#### Added
+#### Changed
+- [ ] Upgrade motioneEye to 0.41.
+    - Corrects Issue #3 - MotionEye - does it run on Chrome 76.0.3809.100.
+        - Backup config files /etc/motioneye
+        - sudo pip install --upgrade motioneye==0.41
+#### Removed
+
 ## [Released]
 ### v1.1 (24Apr2019)
 #### Added

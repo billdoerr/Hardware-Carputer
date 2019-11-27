@@ -16,14 +16,18 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\ISSUE_TRACKER.md
 #### Updates
 - 
 
-## Issue #
+## Issue #3
 ### Status - [Unresolved]
-### Date Reported:  
+### Date Reported:  26Nov2019
 ### Last Update:
 #### Details
-- 
+- MotionEye - does it run on Chrome 76.0.3809.100
+- <https://github.com/ccrisan/motioneye/issues/1449>
+- Work around for browser but not WebClient.  
+    - In your Chrome browser you can go to chrome://flags/#enable-lazy-image-loading and change the option from Default to Disable and reload Chrome.
 #### Corrective Action
--  
+- Upgrade motionEye to 0.41.
+    - Fixed video streams not working on Chrome 76+ (thanks @rajendrant)
 #### Next Steps
 - 
 #### Updates

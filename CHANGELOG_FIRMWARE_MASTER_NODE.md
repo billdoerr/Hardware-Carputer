@@ -36,20 +36,30 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_MASTE
         - sudo mv motioneye ./data/.
         - sudo vi /etc/fstab
         - LABEL=DATA /mnt/data ntfs    defaultsj,nofail,noatime  0    1
-    - [ ] Change motionEye camera configuration file storage setting from /mnt/motioneye to /mnt/data/motioneye.
+    - [ ] Change motionEye camera configuration file storage setting from /mnt/motioneye to /mnt/data/motioneye.  
 
 ## [Unreleased]
-### v1.X (NOT STARTED)
+### v1.5 (IN PROGRESS)
+#### Added
+#### Changed  
+- [ ] Upgrade motioneEye to 0.41.
+    - Corrects Issue #3 - MotionEye - does it run on Chrome 76.0.3809.100.
+        - Backup config files /etc/motioneye
+        - sudo pip install --upgrade motioneye==0.41
+        
+## [Released]
+### v1.4 (4Jul2019)
 #### Added
 #### Changed
-- [ ] Rename USB memory stick label from MOTIONEYE to DATA.
-        - cd /mnt
-        - sudo mkdir data
-        - sudo mv motioneye ./data/.
-        - sudo vi /etc/fstab
-        - LABEL=DATA /mnt/data ntfs    defaultsj,nofail,noatime  0    1
-    - [ ] Change motionEye camera configuration file storage setting from /mnt/motioneye to /mnt/data/motioneye.    
-
+- [x] Change to listen_for_shutdown.py.  Refer to D:\Users\bdoerr\Development\Python\PycharmProjects\carputer\CHANGELOG.md for details.
+- [x] Changed motionEye file storage from 7 days to 3 days.  Troubleshooting issue where /mnt/motioneye archives not being purged.
+- [x] Disabled motionEye Still Images.
+- [x] Update firmware version file
+sudo vi /etc/carputer/version
+Master Node
+v1.4
+Released 4Jul2019
+    
 ## [Released]
 ### v1.4 (4Jul2019)
 #### Added
