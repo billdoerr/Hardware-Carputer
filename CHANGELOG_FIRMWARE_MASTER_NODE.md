@@ -13,6 +13,7 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_MASTE
 - [ ]
 - [ ]
 
+
 ## [Unreleased]
 ### v1.X (NOT STARTED)
 #### Added
@@ -26,6 +27,7 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_MASTE
         - [ ] Press the momentary button and hold for >8 seconds to force shutdown  
 #### Removed
 
+
 ## [Unreleased]
 ### v1.X (NOT STARTED)
 #### Added
@@ -36,17 +38,36 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_MASTE
         - sudo mv motioneye ./data/.
         - sudo vi /etc/fstab
         - LABEL=DATA /mnt/data ntfs    defaultsj,nofail,noatime  0    1
-    - [ ] Change motionEye camera configuration file storage setting from /mnt/motioneye to /mnt/data/motioneye.  
+- [ ] Change motionEye camera configuration file storage setting from /mnt/motioneye to /mnt/data/motioneye.  
+#### Removed
 
-## [Unreleased]
-### v1.5 (IN PROGRESS)
+
+## [Released]
+### v1.5 (28Nov2019)
 #### Added
 #### Changed  
-- [ ] Upgrade motioneEye to 0.41.
+- [x] Upgrade motioneEye to 0.41.
     - Corrects Issue #3 - MotionEye - does it run on Chrome 76.0.3809.100.
-        - Backup config files /etc/motioneye
+        - Ensure date/time is correct
         - sudo pip install --upgrade motioneye==0.41
-        
+        - sudo vi motioneye-41.sh
+            for file in /etc/motioneye/thread-*.conf; 
+            do /usr/local/lib/python2.7/dist-packages/motioneye/scripts/migrateconf.sh $file; 
+            done
+            for file in /etc/motioneye/motion.conf; 
+            do /usr/local/lib/python2.7/dist-packages/motioneye/scripts/migrateconf.sh $file; 
+            done
+        - sudo chmod +x motioneye-41.sh
+        - sudo ./motioneye-41.sh
+        - sudo systemctl restart motioneye
+- [x] Update version
+    cd /etc/carputer
+    sudo vi version
+    v1.5
+    Released 28Nov2019
+#### Removed
+
+      
 ## [Released]
 ### v1.4 (4Jul2019)
 #### Added
@@ -60,6 +81,7 @@ Master Node
 v1.4
 Released 4Jul2019
     
+    
 ## [Released]
 ### v1.4 (4Jul2019)
 #### Added
@@ -72,6 +94,7 @@ sudo vi /etc/carputer/version
 Master Node
 v1.4
 Released 4Jul2019
+    
     
 ## [Released]
 ### v1.3 (17May2019)
@@ -132,6 +155,7 @@ Released 4Jul2019
     https://pimylifeup.com/raspberry-pi-ntfs/  
 #### Removed
 
+
 ## [Released]
 ### v1.2 (24Apr2019)
 #### Added
@@ -143,6 +167,7 @@ Master Node
 v1.2
 Released 24Apr2019
 #### Removed
+
 
 ## [Released]
 ### v1.1 (24Apr2019)

@@ -3,26 +3,30 @@ All notable changes pertaining to the operating system of the hardware nodes use
 File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_SLAVE_NODE.md
 
 
-## [Unreleased]
-### v1.x  (NOT STARTED)
-##  Feature Creep - not assigned to any release 
-
-
-## [Unreleased]
-### v1.X (NOT STARTED)
+## [Released]
+### v1.2 (28Nov2019)
 #### Added
 #### Changed
-- [ ] Sync versions between master and slave.  Even if nothing has change on one of the nodes.
-#### Removed
-
-## [Unreleased]
-### v1.2 (IN PROGRESS)
-#### Added
-#### Changed
-- [ ] Upgrade motioneEye to 0.41.
+- [x] Upgrade motioneEye to 0.41.
     - Corrects Issue #3 - MotionEye - does it run on Chrome 76.0.3809.100.
-        - Backup config files /etc/motioneye
-        - sudo pip install --upgrade motioneye==0.41
+        - Ensure date/time is correct
+        - sudo pip install --upgrade --no-cache-dir motioneye==0.41
+        - sudo vi motioneye-41.sh
+            for file in /etc/motioneye/thread-*.conf; 
+            do /usr/local/lib/python2.7/dist-packages/motioneye/scripts/migrateconf.sh $file; 
+            done
+            for file in /etc/motioneye/motion.conf; 
+            do /usr/local/lib/python2.7/dist-packages/motioneye/scripts/migrateconf.sh $file; 
+            done
+        - sudo chmod +x motioneye-41.sh
+        - sudo ./motioneye-41.sh        
+        - sudo systemctl restart motioneye
+- [x] Update version
+    cd /etc/carputer
+    sudo vi version
+    Slave Node
+    v1.2
+    Released 28Nov2019      
 #### Removed
 
 ## [Released]
