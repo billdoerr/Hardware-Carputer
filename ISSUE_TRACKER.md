@@ -17,8 +17,10 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\ISSUE_TRACKER.md
 - 
 
 ## Issue #3
-### Status - [Unresolved]
+### Status - [Resolved]
 ### Date Reported:  26Nov2019
+### Date Resolved:  28Nov2019
+### Version Resolved:  v1.5
 ### Last Update:
 #### Details
 - MotionEye - does it run on Chrome 76.0.3809.100
@@ -35,8 +37,10 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\ISSUE_TRACKER.md
 
 
 ## Issue #2
-### Status - [Unresolved]
+### Status - [Resolved]
 ### Date Reported:  13Jun2019 06:10
+### Date Resolved:  21Jun2019
+### Version Resolved: N/A Refer to corrective action below.
 ### Last Update:   21Jun2019 08:54
 #### Details
 - USB Stick full.  motionEye should be removing old files greater than 1 week.
@@ -61,7 +65,9 @@ rebooting.  Monitor and and review.
 - 4Jul2019:  Still monitoring.
 
 ## Issue #1
-### Status - [Unresolved]
+### Status - [Resolved]
+### Date Resolved:  21Jun2019
+### Version Resolved: N/A Refer to corrective action below.
 ### Date Reported:  13Jun2019 06:10
 ### Last Update:   21Jun2019 08:54
 #### Details
