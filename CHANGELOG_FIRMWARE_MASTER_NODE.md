@@ -15,6 +15,7 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_MASTE
 ## [Unreleased]
 ### v1.x (NOT STARTED)
 #### Added
+- 
 #### Changed
 - [] Update packages.
     - [] sudo apt update
@@ -32,9 +33,9 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_MASTE
 
 
 ## [Unreleased]
-### v1.6 (18Apr2021)
+### v1.6 (TBD)
 #### Added  
-- [] Setting up the Raspberry Pi for Juice4halt
+- [x] Setting up the Raspberry Pi for Juice4halt
     - [x] Install Python Script - juice4halt.py
         - cd /usr/local/bin
         - sudo vi juice4halt.py 
@@ -48,17 +49,39 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_MASTE
             Add  
                 # Call the juice4halt shutdown script. This will shutdown slave nodes before master node.
                 /home/pi/juice4halt/bin/shutdown_script.sh &
+- [] Made the following motionEye Front Camera configuration changes.
+    - []
+    - []
+- [] Made the following motionEye Rear Camera configuration changes.
+    - []
+    - []
+- [] Added entries to crontab to purge motionEye movie archives
+
+    # Edit crontab file
+    crontab -e
+
+    # Delete motionEye movie archives
+    @reboot find /mnt/motioneye/Front/* -mtime +4 -type d -exec sudo rm -rf {} \;
+    @reboot find /mnt/motioneye/Rear-PiCam/* -mtime +4 -type d -exec sudo rm -rf {} \;
+
+    # Validate crontab file
+    crontab -l
+
+- [] Minor changes to documentation    
+    - [] File archive locations
+    - [] Verify install documentation updated with current configuration steps
 #### Changed 
-- [x] Update version
+- [] Update version
     - sudo vi /etc/carputer/version
         v1.6
-        Released 18Apr2021
+        Released TBD
 #### Removed
 
 
 ## [Released]
 ### v1.5 (28Nov2019)
 #### Added
+- 
 #### Changed  
 - [x] Upgrade motioneEye to 0.41.
     - Corrects Issue #3 - MotionEye - does it run on Chrome 76.0.3809.100.
@@ -85,6 +108,7 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_MASTE
 ## [Released]
 ### v1.4 (4Jul2019)
 #### Added
+- 
 #### Changed
 - [x] Change to listen_for_shutdown.py.  Refer to D:\Users\bdoerr\Development\Python\PycharmProjects\carputer\CHANGELOG.md for details.
 - [x] Changed motionEye file storage from 7 days to 3 days.  Troubleshooting issue where /mnt/motioneye archives not being purged.
