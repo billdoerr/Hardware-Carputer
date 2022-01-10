@@ -20,21 +20,19 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\ISSUE_TRACKER.md
  
 
 ## Issue #6
-### Status - [Still Un-Resolved]
+### Status - [Resolved]
 ### Date Reported: 15Dec2021 
 ### Last Update: 9Jan2022   
 #### Details
 - Camera-Rear node not syncing with master.  Suspect with the addition of the UPS, there is a delay with this node powering up before master has booted up. 
 #### Corrective Action
-- New timesync.sh.  SSH certificate not working for some reason. Modified script
-to run as a 'sudo crontab' and not as user 'pi'. Another script modification is to use the 'sshpass' package and just hardcode
+- New timesync.sh.  SSH certificate not working for some reason. Another script modification is to use the 'sshpass' package and just hard code
 the password. Doesn't matter, RPi's have no security. 
 - 9Jan2022: FINAL RESOLUTION
     - New timesync.sh
     - Disable systemd-timesyncd
     - sudo chmod 777 timesync.sh
     - Run in 'crontab -e' as user pi
-- 
 #### Next Steps
 - Create v1.2.1 image and release.
 #### Updates
