@@ -3,6 +3,39 @@ All notable changes pertaining to the operating system of the hardware nodes use
 File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_SLAVE_NODE.md
 
 
+## [Unreleased]
+### v1.X (TBD) 
+#### Added
+- [] 
+#### Changed
+- []  
+#### Removed
+
+
+## [Unreleased]
+### v1.2.1 (9Jan2022) 
+#### Added 
+-[x] sudo apt-get install sshpass
+#### Changed  
+- [x]  Somehow v1.2 lost configuration setting where motioneEye->Video Device->Frame Rate->30.  v1.2 has this set to zero.
+- [x]  Add new bash script timesync.sh
+    - [x] Install document updated
+    - [x] Bash located within Python scripts, ensure gets added to git
+    - [x] Disable systemd-timesyncd
+    - [x] sudo chmod 777 timesync.sh
+    - [x] Run in 'crontab -e' as user pi 
+- [x] Update version
+    cd /etc/carputer
+    sudo vi version
+    Carputer-Camera-Rear
+    v1.2.1
+    Released 9Jan2022  
+- [] Minor changes to install documentation 
+    - [] File archive locations
+    - [] Verify install documentation updated with current configuration steps
+#### Removed
+
+
 ## [Released]
 ### v1.2 (28Nov2019)
 #### Added
@@ -28,6 +61,7 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_SLAVE
     v1.2
     Released 28Nov2019      
 #### Removed
+
 
 ## [Released]
 ### v1.1 (24Apr2019)
