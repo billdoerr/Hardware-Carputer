@@ -61,15 +61,15 @@ the master motionEye service.
 #### Corrective Action
 -  Add cron job to delete directories older than 4 days
 
-    # Edit crontab file
+    Edit crontab file
     sudo crontab -e
     
-    # Add the following
+    Add the following
     # Delete motionEye movie archives greater than 4 days
     @reboot find /mnt/motioneye/Front/* -mtime -4 -type d -exec sudo rm -rf {} \;
     @reboot find /mnt/motioneye/Rear-PiCam/* -mtime -4 -type d -exec sudo rm -rf {} \;
     
-    # Validate crontab file
+    Validate crontab file
     sudo crontab -l
     
     
