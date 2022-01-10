@@ -20,7 +20,7 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\ISSUE_TRACKER.md
  
 
 ## Issue #6
-<span style="color:red">### Status - [Resolved]</span>
+### Status - [Resolved]
 ### Date Reported: 15Dec2021 
 ### Last Update: 9Jan2022   
 #### Details
@@ -49,6 +49,7 @@ the master motionEye service.
 		• sudo systemctl stop systemd-timesyncd.service 
 		• sudo systemctl disable systemd-timesyncd.service
 		• sudo systemctl status systemd-timesyncd.service 
+ 
  
 ## Issue #5
 ### Status - [Unresolved][Testing]
