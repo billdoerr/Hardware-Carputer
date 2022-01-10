@@ -20,7 +20,7 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\ISSUE_TRACKER.md
  
 
 ## Issue #6
-### Status - [Resolved]
+<span style="color:red">### Status - [Resolved]</span>
 ### Date Reported: 15Dec2021 
 ### Last Update: 9Jan2022   
 #### Details
