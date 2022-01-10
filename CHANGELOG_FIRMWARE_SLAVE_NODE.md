@@ -12,7 +12,7 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_SLAVE
 #### Removed
 
 
-## [Unreleased]
+## [Released]
 ### v1.2.1 (9Jan2022) 
 #### Added 
 -[x] sudo apt-get install sshpass
@@ -30,9 +30,9 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_SLAVE
     Carputer-Camera-Rear
     v1.2.1
     Released 9Jan2022  
-- [] Minor changes to install documentation 
-    - [] File archive locations
-    - [] Verify install documentation updated with current configuration steps
+- [x] Minor changes to install documentation 
+    - [x] File archive locations
+    - [x] Verify install documentation updated with current configuration steps
 #### Removed
 
 
