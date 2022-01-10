@@ -26,6 +26,3 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_HARDWARE_MASTE
 ## [Released]
 ### v1.5 and below (PREVIOUS VERSIONS NOT DOCUMENTED) 
 
-
-
-
