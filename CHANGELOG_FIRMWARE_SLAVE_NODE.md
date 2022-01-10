@@ -15,7 +15,7 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_SLAVE
 ## [Released]
 ### v1.2.1 (9Jan2022) 
 #### Added 
--[x] sudo apt-get install sshpass
+- [x] sudo apt-get install sshpass
 #### Changed  
 - [x]  Somehow v1.2 lost configuration setting where motioneEye->Video Device->Frame Rate->30.  v1.2 has this set to zero.
 - [x]  Add new bash script timesync.sh
