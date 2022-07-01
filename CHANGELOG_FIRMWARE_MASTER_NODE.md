@@ -13,7 +13,7 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_MASTE
 
 
 ## [Unreleased]
-### v1.x (NOT STARTED)
+### v1.6.2 (NOT STARTED)
 #### Added
 - 
 #### Changed
@@ -27,13 +27,57 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_MASTE
     - sudo mv motioneye ./data/.
     - sudo vi /etc/fstab
     - LABEL=DATA /mnt/data ntfs    defaultsj,nofail,noatime  0    1
-- [] Change motionEye camera configuration file storage setting from /mnt/motioneye to /mnt/data/motioneye.  
+- [] Change motionEye camera configuration file storage setting from /mnt/motioneye to /mnt/data/motioneye. 
+- [] Minor changes to documentation    
+    - [] File archive locations
+    - [] Verify install documentation updated with current configuration steps 
+- [] Update version
+    - sudo vi /etc/carputer/version
+        v1.6.2
+        Released TBD    
+- [] Made the following motionEye Front Camera configuration changes.
+    - []
+    - []
+- [] Made the following motionEye Rear Camera configuration changes.
+    - []
+    - []
+
 #### Removed  
 - [] Uninstall Python2. 
 
 
-## [Unreleased]
-### v1.6 (TBD)
+## [Released]
+### v1.6.1 (24Jun2022)
+#### Added
+- 
+#### Changed
+- [x] Change USB partition from NTFS to EXT4
+    - Identify the drive
+        - [x] lsblk
+    - We will now use the fdisk tool to wipe out the existing partitions and create new ones. This is not always essential but ensures we have a known state on the disk.
+        - Enter 'd' to delete partition if one exists.
+            - [x] sudo fdisk /dev/sda
+        - Verify
+            - [x] sudo fdisk -l /dev/sda1
+        - We'll now format the partition we just created and at the same time attach a unique label.
+            - [x] sudo mkfs.ext4 -L MOTIONEYE /dev/sda1     <- for ext4
+        - Make it permanent
+            - [x] sudo nano /etc/fstab
+        - Add a line underneath, save the file, then reboot:
+            - [x] LABEL=MOTIONEYE /mnt/motioneye ext4    defaultsj,nofail,noatime  0    1               
+- [x] Minor changes to documentation    
+    - [x] File archive locations
+    - [x] Verify install documentation updated with current configuration steps 
+- [x] Update version
+    - sudo vi /etc/carputer/version
+        v1.6.1
+        Released 24Jun2022    
+#### Removed  
+- 
+
+
+## [Released]
+### v1.6 (18Apr2021)
 #### Added  
 - [x] Setting up the Raspberry Pi for Juice4halt
     - [x] Install Python Script - juice4halt.py
@@ -49,32 +93,11 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_FIRMWARE_MASTE
             Add  
                 # Call the juice4halt shutdown script. This will shutdown slave nodes before master node.
                 /home/pi/juice4halt/bin/shutdown_script.sh &
-- [] Made the following motionEye Front Camera configuration changes.
-    - []
-    - []
-- [] Made the following motionEye Rear Camera configuration changes.
-    - []
-    - []
-- [] Added entries to crontab to purge motionEye movie archives
-
-    # Edit crontab file
-    crontab -e
-
-    # Delete motionEye movie archives
-    @reboot find /mnt/motioneye/Front/* -mtime +4 -type d -exec sudo rm -rf {} \;
-    @reboot find /mnt/motioneye/Rear-PiCam/* -mtime +4 -type d -exec sudo rm -rf {} \;
-
-    # Validate crontab file
-    crontab -l
-
-- [] Minor changes to documentation    
-    - [] File archive locations
-    - [] Verify install documentation updated with current configuration steps
 #### Changed 
-- [] Update version
+- [x] Update version
     - sudo vi /etc/carputer/version
         v1.6
-        Released TBD
+        Released 18Apr2021
 #### Removed
 
 

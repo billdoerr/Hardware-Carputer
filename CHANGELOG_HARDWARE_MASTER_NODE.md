@@ -14,7 +14,7 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_HARDWARE_MASTE
 
 
 ## [Released]
-### v1.6 (9Jan2022) 
+### v1.2 (18Apr2021) 
 #### Added
 - [x] Implement the Juice4halt UPS Pi HAT, Model #J4H-5V-USB.
     - https://juice4halt.com/ 
@@ -24,5 +24,5 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\CHANGELOG_HARDWARE_MASTE
 
 
 ## [Released]
-### v1.5 and below (PREVIOUS VERSIONS NOT DOCUMENTED) 
+### v1.1 and below (PREVIOUS VERSIONS NOT DOCUMENTED) 
 

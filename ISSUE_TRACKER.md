@@ -9,6 +9,8 @@ File:  D:\Users\bdoerr\Development\RaspberryPi\Carputer\ISSUE_TRACKER.md
 ### Last Update: 
 #### Details
 - 
+#### Resolved:
+- 
 #### Corrective Action
 -  
 #### Next Steps
@@ -49,35 +51,22 @@ the master motionEye service.
 		• sudo systemctl stop systemd-timesyncd.service 
 		• sudo systemctl disable systemd-timesyncd.service
 		• sudo systemctl status systemd-timesyncd.service 
- 
+- 10Jan2022: Node didn't sync with master after reinstalling in auto. Required a date sync via the app. Will monitor. 
+- 12Jan2022: Date/time in sync.
+
  
 ## Issue #5
-### Status - [Unresolved][Testing]
-### Date Reported: 3Dec2021
-### Last Update:  29Dec2021  
-#### Details    
+### Status - [Resolved][Validating]
+### Date Reported: 3Dec2021 
+### Last Update:  30Jun2022   
+#### Details     
 - Intermittent issue with movie archives not being purged after. Configuration is set to archive 3 days.
     - Finding one or more directories corrupted and not able to delete on a Windows machine. Fix is to reformat the USB drive.
-    - Monitor if still an issue after implementing Juice4halt (see Carputer v1.6). THIS IS STILL AN ISSUE.    
+    - Monitor if still an issue after implementing Juice4halt (see Carputer v1.6). THIS IS STILL AN ISSUE.  
+#### Resolved:
+- FIRMWARE_MASTER v1.6.1    
 #### Corrective Action
--  Add cron job to delete directories older than 4 days
-
-    Edit crontab file
-    sudo crontab -e
-    
-    Add the following
-    # Delete motionEye movie archives greater than 4 days
-    @reboot find /mnt/motioneye/Front/* -mtime -4 -type d -exec sudo rm -rf {} \;
-    @reboot find /mnt/motioneye/Rear-PiCam/* -mtime -4 -type d -exec sudo rm -rf {} \;
-    
-    Validate crontab file
-    sudo crontab -l
-    
-    
--  Possible the .keep file is preventing the file cleanup to occur. Reference this link: https://github.com/ccrisan/motioneye/issues/1810.
-    - DID NOT WORK.  REMOVED CHANGES.
-        - BELOW IMPLEMENT 16Dec2021
-        - In file: /usr/local/lib/python2.7/dist-packages/motioneye/mediafiles.py just comment all strings with word .keep and comment one associated string: if os.path.exists(target_dir)
+- Change USB partition from NTFS to EXT4. 
     
 #### Next Steps
 - 
@@ -86,10 +75,49 @@ the master motionEye service.
 - 29Dec2021: Cron job not working. Need to verify if the is implemented under 'sudo' or 'pi' user. Maybe need to schedule this cron job rather that at reboot?
 - 30Dec2021: Implemented as 'sudo crontab -e'.
 - 5Jan2022: There is directory dated 1Jan2022 that should have been purged. Follow-up on 6Jan2022.
+- 9Jan2022: Directories are becoming corrupt. Requires a disk format to resolve. This explains why the archive purge is not working.
+- 18Jan2022: Some directories becoming corrupt. Used Windows chkdsk command to fix. Once RPi was rebooted the directories were purged. Next time try the 
+    Best practices
+    • Always shutdown with shutdown -h 0 or halt -h - never pull the power cable.
+    • If you are using the drive only temporarily then type in sudo umount /mnt/motioneye before pulling out the USB cable - or shutdown the system first.
+    • If you have a power-cut or accidental power-out then you can repair the filesystem like this:
+        $ sudo umount /mnt/motioneye 
+        $ sudo fsck /dev/sda
+            fsck from util-linux 2.25.2
+            e2fsck 1.42.12 (29-Aug-2014)
+        $ sudo mount /mnt/motioneye 
+
+- 18Jan2022: syslog only had once entry pertaining to low power. Don't believe this is the cause of the corrupted directories.
+    Dec  8 06:24:32 carputer kernel: [   10.391641] Under-voltage detected! (0x00050005)
+- 24Jan2022: Changed file system from ntfs to vfat. 
+- 25Jan2022: Change working and appears faster when viewing with the Android app. I expected to be able to view files using Windows, but this is not the case. 
+             Need to test for a week to see if cron jobs are working correctly. 
+- 27Jan2022: Not sure what I did wrong but changes made on 27Jan2022 to use vfat didn't work. Files were writing to SD card (I think). I redid the USB file system to use ext4. 
+             Need to test for a week to see if cron jobs are working correctly. Will use WinSCP to transfer files to Windows, if needed.
+             
+                pi@carputer:~ $ lsblk
+                NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+                sda           8:0    1 58.4G  0 disk 
+                `-sda1        8:1    1 58.4G  0 part /mnt/motioneye
+                mmcblk0     179:0    0 29.7G  0 disk 
+                |-mmcblk0p1 179:1    0 43.9M  0 part /boot
+                `-mmcblk0p2 179:2    0 29.7G  0 part /
+
+                pi@carputer:~ $ df -a
+                Filesystem     1K-blocks    Used Available Use% Mounted on
+                /dev/root       30562828 3004032  26255788  11% /
+                ...
+                /dev/sda1       60027788   68324  56880452   1% /mnt/motioneye
+
+- 27Jan2022: Disabled cron jobs to test if motioneEye purges files.
+- 27Jan2022: Verified able to transfer files using WinSCP. Noticed about 50% were corrupted videos. 
+- 5Feb2022: Changed USB file system from ntfs to ext4. This appears to have solve the  archive deletion issue. 
+            Next Step: Create a flash a new v1.6 image and apply v1.6.1 changes.  
+- 27Jun2022: Validation of v1.6.1
  
  
 ## Issue #4
-### Status - [Unresolved]
+### Status - [Unresolved][Troubleshooting]
 ### Date Reported: 3Dec2021
 ### Last Update:  31Dec2021
 #### Details     
@@ -107,7 +135,39 @@ the master motionEye service.
 - 31Dec2021: Enabled more verbose logging.
     /etc/motion/motion.conf -> log_level 8
 - 5Jan2022: Only a few videos were corrupt. Have not reviewed log yet.
+- 9Jan2022: I suspect node is loosing wifi connectivity with the master which I would suspect is causing video corruption from the node, but doesn't explain corrupted videos on the master.
+- 10Jan2022: Try these links
+    https://forums.raspberrypi.com/viewtopic.php?t=294556 
+    https://raspberrypi.stackexchange.com/questions/58522/raspberry-pi-3-losing-wi-fi-connection-frequently
+    https://raspberrypi.stackexchange.com/questions/15142/wifi-drops-on-raspberry-pi
+    
+    TRY THIS FIRST!!
+    DIDN'T FUCKING WORK!!
+    https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/test-and-configure#fixing-wifi-dropout-issues
+    https://forums.adafruit.com/viewtopic.php?f=50&t=44171&p=220622#p220593
+        Create and edit a new file in /etc/modprobe.d/8192cu.conf
+
+        sudo nano /etc/modprobe.d/8192cu.conf
+
+        and paste the following in
+
+        # Disable power saving
+        options 8192cu rtw_power_mgnt=0 rtw_enusbss=1 rtw_ips_mode=1
+
+        Then reboot with sudo reboot
  
+    ENABLE wpa_supplicant DEBUG
+    https://forums.raspberrypi.com/viewtopic.php?f=36&t=234058&p=1432916#p1432916
+    https://forum.pistar.uk/viewtopic.php?t=2948
+    https://netbeez.net/blog/linux-wireless-engineers-read-wpa-supplicant-logs/
+    wpa_supplicant -u -s -O
+- 11Jan2022: It turns out I don't have that many corrupt files. The rear camera has a large amount of 'camera not available'. Other movies I thought were corrupt, those that display a traffic cone, are not corrupt but video is recorded later in the video.
+- 11Jan2022: ost common causes of file system corruption are due to improper shutdown or startup procedures, hardware failures, or NFS write errors. 
+    https://frameboxxindore.com/linux/quick-answer-what-causes-file-corruption-linux.html
+    https://www.google.com/search?client=firefox-b-1-d&q=linux+what+would+cause+a+corrupt+directory
+    https://askubuntu.com/questions/906044/recover-a-corrupt-directory
+- 12Jan2022: Rear camera has majority corrupted videos and should be the focus. Front corruption is rare.
+
  
 ## Issue #3
 ### Status - [Resolved]
