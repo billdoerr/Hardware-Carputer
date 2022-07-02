@@ -56,9 +56,9 @@ the master motionEye service.
 
  
 ## Issue #5
-### Status - [Resolved][Validating]
+### Status - [Resolved]
 ### Date Reported: 3Dec2021 
-### Last Update:  30Jun2022   
+### Last Update:  2Jul2022   
 #### Details     
 - Intermittent issue with movie archives not being purged after. Configuration is set to archive 3 days.
     - Finding one or more directories corrupted and not able to delete on a Windows machine. Fix is to reformat the USB drive.
